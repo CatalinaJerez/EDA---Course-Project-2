@@ -99,7 +99,7 @@ ggsave('Plot2B.png', plot = plot2B, width = 10, height = 7, units = 'cm')
 ````
 
 
-## Create Plot1.R
+## Create Plot2.R
 
 
 ````{r}
