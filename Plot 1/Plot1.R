@@ -1,8 +1,8 @@
-## ----setup, include=FALSE-------------------------------
+## ----setup, include=FALSE----------------------------------------
 knitr::opts_chunk$set(echo = TRUE, results = 'asis')
 
 
-## -------------------------------------------------------
+## ----------------------------------------------------------------
 setwd("~/Google Drive/Coursera/EDA")
 
 # Install and load required packages
@@ -16,7 +16,7 @@ library(data.table)
 
 
 
-## -------------------------------------------------------
+## ----------------------------------------------------------------
 # name for zip file
 setwd("~/Google Drive/Coursera/EDA")
 file.zip <- 'EDA_Final.zip' 
@@ -32,7 +32,7 @@ SCC <- readRDS("Source_Classification_Code.rds")
 
 
 
-## -------------------------------------------------------
+## ----------------------------------------------------------------
 # Total PM2.5 emission from 1999 to 2008
 
 # First, we look inside the dataset
@@ -46,14 +46,14 @@ Emiss.tot
 
 
 
-## -------------------------------------------------------
+## ----------------------------------------------------------------
 # Plot emission using base plotting system
 
 
 png("Plot1A.png", width = 1000, height = 800, units = 'px')
 barplot(Emiss.tot$Total, Emiss.tot$year, 
         col = c("lightblue", "mistyrose","lightcyan", "lavender"), 
-        log = 'y', ylab = 'Total PM2.5 emissions',
+        log = 'y', ylab = 'Total PM2.5 emissions per year (tons)',
         xlab = "Years", names.arg = Emiss.tot$year,
         main = "Total emissions from PM2.5 decreased in the United States")
 dev.off()
@@ -63,7 +63,7 @@ dev.off()
 plot1B <- ggplot(data = Emiss.tot)+
  geom_col(aes(x = as.factor(year), y = Total, fill = year, alpha = 0.9))+
  scale_y_continuous(labels=function(n){format(n, scientific = FALSE)})+
- labs(x = 'Years', y = 'Total PM2.5 emissions', 
+ labs(x = 'Years', y = 'Total PM2.5 emissions per year (tons)', 
       title = 'Total emissions from PM2.5 decreased in the United States')+
  scale_fill_distiller(name = 'Years',palette = "RdYlBu", direction = 1)+
  guides(alpha = 'none')+
@@ -71,11 +71,11 @@ plot1B <- ggplot(data = Emiss.tot)+
 
 plot1B
 
-ggsave('Plot1B.png', plot = plot1B, width = 20, height = 15, units = 'cm')
+ggsave('Plot1B.png', plot = plot1B, width = 10, height = 7, units = 'cm')
 
 
 
-## -------------------------------------------------------
-library(knitr)
-purl('Plot1.Rmd')
+## ----------------------------------------------------------------
+#library(knitr)
+#purl('Plot1.Rmd')
 
